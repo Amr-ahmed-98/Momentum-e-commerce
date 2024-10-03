@@ -31,7 +31,7 @@ const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
   paddingTop: '100%', // 1:1 Aspect Ratio
   [theme.breakpoints.up('md')]: {
     width: '50%',
-    paddingTop: '50%', // Maintain aspect ratio
+    paddingTop: '50%', // to Maintain aspect ratio of the image in mobile view
   },
 }));
 

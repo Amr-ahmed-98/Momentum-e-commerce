@@ -37,6 +37,7 @@ export const CartProvider: React.FC<{children: React.ReactNode}> = ({children}) 
     localStorage.setItem('countOfProducts', cart.length.toString());
   }, [cart]);
 
+  // it will add the product to the cart and if the product is already in the cart, it will increase the quantity by 1
   const addProduct = (product: Product) => {
     setCart(prevCart => {
       const existingItemIndex = prevCart.findIndex(item => item.id === product.id);
@@ -50,6 +51,7 @@ export const CartProvider: React.FC<{children: React.ReactNode}> = ({children}) 
     });
   }
 
+//   it see if the product is already in the cart and if it is, it will increase the quantity by 1
   const removeProduct = (id: number) => {
     setCart(prevCart => {
       const existingItemIndex = prevCart.findIndex(item => item.id === id);

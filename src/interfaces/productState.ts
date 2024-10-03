@@ -1,3 +1,4 @@
+// this is an interface for the product data that come from api
 interface Rating {
     rate: number;
     count: number;
