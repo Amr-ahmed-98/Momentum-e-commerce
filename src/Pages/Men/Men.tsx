@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../Contexts/CartContext';
 
 const StyledCard = styled(Card)(() => ({
   height: '100%',
@@ -30,6 +31,7 @@ const StyledCardContent = styled(CardContent)({
 });
 const Men = () => {
   const navigate = useNavigate();
+  const {addProduct} = useCart();
   const { data, isLoading, error } = useQuery({
     queryKey: ['products'],
     queryFn: async () => {
@@ -46,7 +48,7 @@ const Men = () => {
 
   const handleAddToCart = (event: React.MouseEvent, product: Product) => {
     event.stopPropagation(); // Prevent navigation when clicking the button
-    console.log(product.id);
+    addProduct(product);
   };
 // when user clicks on a product, navigate to the product details page using the product id 
 const handleProductClick = (productId: number) => {

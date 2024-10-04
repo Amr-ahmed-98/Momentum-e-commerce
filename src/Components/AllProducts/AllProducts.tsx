@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
@@ -42,7 +42,7 @@ type SortOption = 'none' | 'priceAsc' | 'priceDesc' | 'titleAsc' | 'titleDesc';
 const AllProducts = () => {
   const [sortOption, setSortOption] = useState<SortOption>('none');
   const navigate = useNavigate();
-  const {addProduct,cart} = useCart();
+  const {addProduct} = useCart();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['products'],
@@ -83,15 +83,9 @@ const AllProducts = () => {
   const handleAddToCart = (event: React.MouseEvent, product: Product) => {
     event.stopPropagation(); // Prevent navigation when clicking the button
     addProduct(product);
-    console.log(cart);
-    
   };
 
-  useEffect(()=>{
-    console.log(cart);
-    
-  },[cart])
-
+ 
   // when user clicks on a product, navigate to the product details page using the product id 
   const handleProductClick = (productId: number) => {
     navigate(`/ProductDetails/${productId}`);
